@@ -5,4 +5,4 @@
 TNC Firmware Creator: SQ9MDD
 PCB Creator: TA1KNN
 
-![APRS Igate PCB TA1KNN](http://url/to/img.png)
+![APRS Igate PCB TA1KNN](https://github.com/ltiisidii/Igate-Digipeater-ESP8266/blob/main/res/aprs-pcb.png)
