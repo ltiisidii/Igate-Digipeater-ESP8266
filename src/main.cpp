@@ -1,10 +1,16 @@
 #include <Arduino.h>
+#include "DisplayManager.h"
+#include "WebServerManager.h"
 
 void setup() {
   Serial.begin(115200);
-  Serial.println("Test de ESP8266");
+  setupDisplay();
+  connectToWiFi();
+  setupWebServer();
 }
 
-void loop (){
-  
+void loop() {
+  updateDisplay();
+  handleWebServer();
+  // Resto del código
 }
