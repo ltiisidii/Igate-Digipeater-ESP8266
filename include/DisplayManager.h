@@ -3,6 +3,9 @@
 
 #include <SSD1306Wire.h>
 
+// Declaración externa de puntero a display
+extern SSD1306Wire* displayPtr;
+
 void setupDisplay();
 void updateDisplay();
 

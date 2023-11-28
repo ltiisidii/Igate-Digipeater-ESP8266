@@ -1,7 +1,7 @@
 #include "WebServerManager.h"
 
-const char* ssid = "wifialaqueconectarse";
-const char* password = "passwordwifi";
+const char* ssid = "ssid_name"; // ssid_name
+const char* password = "password_wifi";  // password_wifi
 int ledPin = 2; // GPIO2 en NodeMCU
 WiFiServer server(80);
 
@@ -33,9 +33,10 @@ void setupWebServer() {
   Serial.println("/");
 }
 
+
 void handleWebServer() {
   // Espera a que un cliente se conecte
-  WiFiClient client = server.available();
+  WiFiClient client = server.accept();
   if (!client) {
     return;
   }
@@ -50,17 +51,6 @@ void handleWebServer() {
   Serial.println(request);
   client.flush();
 
-  // Procesa la solicitud
-  int value = HIGH; // Inicialmente apagado
-  if (request.indexOf("/LED=OFF") != -1) {
-    digitalWrite(ledPin, HIGH);
-    value = HIGH;
-  }
-  if (request.indexOf("/LED=ON") != -1) {
-    digitalWrite(ledPin, LOW);
-    value = LOW;
-  }
-
   // Devuelve la respuesta al cliente
   client.println("HTTP/1.1 200 OK");
   client.println("Content-Type: text/html");
@@ -68,15 +58,18 @@ void handleWebServer() {
   client.println("<!DOCTYPE HTML>");
   client.println("<html>");
 
-  client.print("Led pin is now: ");
-  if (value == HIGH) {
-    client.print("Off");
-  } else {
-    client.print("On");
-  }
-  client.println("");
-  client.println("<a href=\"/LED=ON\"\"><button>Turn On </button></a>");
-  client.println("<a href=\"/LED=OFF\"\"><button>Turn Off </button></a><br />");
+  client.println("<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"></head>");
+  client.println("<body>");
+
+  client.println("<h1>Información de la red Wi-Fi</h1>");
+  client.print("<p>Nombre de la red Wi-Fi: ");
+  client.print(ssid);
+  client.println("</p>");
+  client.print("<p>Dirección IP: ");
+  client.print(WiFi.localIP());
+  client.println("</p>");
+
+  client.println("</body>");
   client.println("</html>");
 
   delay(1);
