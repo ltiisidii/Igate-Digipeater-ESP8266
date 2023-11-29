@@ -3,8 +3,8 @@
 
 #include <ESP8266WiFi.h>
 
-void connectToWiFi();
 void setupWebServer();
 void handleWebServer();
+void serveFile(WiFiClient& client, const char* path, const char* contentType);
 
 #endif

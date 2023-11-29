@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <SSD1306Wire.h>
 #include "DisplayManager.h"
+#include "WiFiManagerManager.h"
 #include "WebServerManager.h"
 #include "images.h"
 
@@ -10,7 +11,7 @@ bool displayActive = true;
 void setup() {
   Serial.begin(115200);
   setupDisplay();
-  connectToWiFi();
+  setupWiFiManager();
   setupWebServer();
 }
 
@@ -21,7 +22,7 @@ void loop() {
 
   // Muestra el logo
   displayPtr->clear();
-  displayPtr->drawXbm(0, 0, aprs_width, aprs_height, aprs_bits); //  displayPtr->drawXbm(0, 0, aprs_width, aprs_height, aprs_bits);
+  displayPtr->drawXbm(0, 0, aprs_width, aprs_height, aprs_bits);
   displayPtr->display();
   delay(1000);
 
