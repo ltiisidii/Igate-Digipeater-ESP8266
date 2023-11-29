@@ -28,25 +28,31 @@ void handleWebServer() {
 
   // Determinar la ruta solicitada
   String path = request.substring(request.indexOf(' ') + 1, request.lastIndexOf(' '));
-    if (path == "/" || path == "/index.html") {
-      serveFile(client, "/index.html", "text/html");
-    } else if (path == "/css/styles.css") {
-      serveFile(client, "/css/styles.css", "text/css");
-    } else if (path == "/js/script.js") {
-      serveFile(client, "/js/script.js", "application/javascript");
-    } else if (path == "/css/bootstrap.min.css") {
-      serveFile(client, "/css/bootstrap.min.css", "text/css");
-    } else if (path == "/js/jquery-3.5.1.slim.min.js") {
-      serveFile(client, "/js/jquery-3.5.1.slim.min.js", "application/javascript");
-    } else if (path == "/js/popper.min.js") {
-      serveFile(client, "/js/popper.min.js", "application/javascript");
-    } else if (path == "/js/bootstrap.min.js") {
-      serveFile(client, "/js/bootstrap.min.js", "application/javascript");
-    } else {
+
+  if (path.equals("/") || path.equals("/index.html")) {
+    serveFile(client, "/index.html", "text/html");
+  } else if (path.equals("/config")) {
+    serveFile(client, "/config.html", "text/html");
+  } else if (path.equals("/stats")) {
+    serveFile(client, "/stats.html", "text/html");
+  } else if (path.equals("/css/styles.css")) {
+    serveFile(client, "/css/styles.css", "text/css");
+  } else if (path.equals("/js/script.js")) {
+    serveFile(client, "/js/script.js", "application/javascript");
+  } else if (path.equals("/css/bootstrap.min.css")) {
+    serveFile(client, "/css/bootstrap.min.css", "text/css");
+  } else if (path.equals("/js/jquery-3.5.1.slim.min.js")) {
+    serveFile(client, "/js/jquery-3.5.1.slim.min.js", "application/javascript");
+  } else if (path.equals("/js/popper.min.js")) {
+    serveFile(client, "/js/popper.min.js", "application/javascript");
+  } else if (path.equals("/js/bootstrap.min.js")) {
+    serveFile(client, "/js/bootstrap.min.js", "application/javascript");
+  } else {
     // Manejar otras rutas según sea necesario
     // Puedes agregar más rutas y su manejo aquí
     // Por ejemplo, puedes manejar solicitudes de imágenes, etc.
   }
+
 
   delay(1);
   Serial.println("Client disconnected");
