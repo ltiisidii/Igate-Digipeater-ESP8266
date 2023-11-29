@@ -33,11 +33,11 @@
 
     .navbar-dark .navbar-brand,
     .navbar-dark .navbar-nav .nav-link {
-      color: #fff !important;
+      color: #000 !important;
     }
 
     .form-check-input:checked + .form-check-label {
-      color: #fff !important;
+      color: #000 !important;
     }
 
     /* Estilos para el contenido en dark mode */
@@ -48,8 +48,11 @@
     }
 
     /* Estilos para el ícono del navbar-toggler en dark mode */
-    .navbar-dark .navbar-toggler-icon {
-      background-color: #000 !important;
+    @media (max-width: 768px) {
+      .navbar-dark .navbar-toggler-icon {
+        background-color: #fff !important; /* Fondo blanco */
+        border: 1px solid #000 !important; /* Borde negro */
+      }
     }
   </style>
 </head>
@@ -87,7 +90,134 @@
 <div class="container mt-4">
   <h2>Bienvenido al APRS iGate Dashboard</h2>
   <p>Aquí puedes ver la información y configurar tu dispositivo APRS iGate.</p>
-  <!-- Agrega el contenido específico del dashboard aquí -->
+
+  <!-- Grid principal -->
+  <div class="row">
+    <!-- Grid Uptime y Free RAM -->
+    <div class="col-lg-4">
+      <h5>Uptime</h5>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>0D 3:56</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h5>Free RAM (KByte)</h5>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>179.3/347.9</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h5>Modes Enabled</h5>
+      <div class="btn-group" role="group" aria-label="Modes Enabled">
+        <button type="button" class="btn btn-secondary">Igate</button>
+        <button type="button" class="btn btn-secondary">Digi</button>
+      </div>
+    </div>
+
+    <!-- Grid Statistics -->
+    <div class="col-lg-4">
+      <h5>Statistics</h5>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Packet RX</td>
+            <td>630</td>
+          </tr>
+          <tr>
+            <td>Packet TX</td>
+            <td>454</td>
+          </tr>
+          <tr>
+            <td>RF2INET</td>
+            <td>381</td>
+          </tr>
+          <tr>
+            <td>INET2RF</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>DIGI</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>DROP/ERR</td>
+            <td>0/0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Grid APRS Server -->
+    <div class="col-lg-4">
+      <h5>APRS Server</h5>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Host</td>
+            <td>rotate.aprs2.net</td>
+          </tr>
+          <tr>
+            <td>Port</td>
+            <td>14580</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h5>Wifi</h5>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Mode</td>
+            <td>Ap</td>
+          </tr>
+          <tr>
+            <td>SSID</td>
+            <td>APRS-Igate</td>
+          </tr>
+          <tr>
+            <td>RSSI</td>
+            <td>-41dBm</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Grid Last Heard -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h5>Last Heard</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Time (-3GMT)</th>
+            <th>Icon</th>
+            <th>Via Last Path</th>
+            <th>DX</th>
+            <th>Packet</th>
+            <th>Audio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>18:17:48</td>
+            <td>Icono ambulancia</td>
+            <td>LU1ABC-13 Digi: LU7AA-2*</td>
+            <td>17.8k/221°</td>
+            <td>44</td>
+            <td>-8.9dBV</td>
+          </tr>
+          <!-- Agrega más filas según sea necesario -->
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 <!-- Agrega la referencia a Bootstrap 5 JS y Popper.js (necesarios para Bootstrap) -->
