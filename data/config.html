@@ -6,6 +6,7 @@
   <title>APRS iGate Digipeater</title>
   <!-- Agrega la referencia a Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
   <style>
     /* Estilos comunes */
     body {
@@ -79,7 +80,7 @@
           <a class="nav-link" href="#">Configuración</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Estadísticas</a>
+          <a class="nav-link" href="#">Wifi Config</a>
         </li>
       </ul>
     </div>
@@ -89,134 +90,105 @@
 <!-- Contenido del Dashboard -->
 <div class="container mt-4">
   <p>Aquí puedes configurar tu dispositivo APRS iGate.</p>
+  <div id="Configs" class="tabcontent" style="display: block;">
 
-  <!-- Grid principal -->
-  <div class="row">
-    <!-- Grid Uptime y Free RAM -->
-    <div class="col-lg-4">
-      <h5>Uptime</h5>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td>0D 3:56</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h5>Free RAM (KByte)</h5>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td>179.3/347.9</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h5>Modes Enabled</h5>
-      <div class="btn-group" role="group" aria-label="Modes Enabled">
-        <button type="button" class="btn btn-secondary">Igate</button>
-        <button type="button" class="btn btn-secondary">Digi</button>
-      </div>
+    <div class="pure-control-group">
+      <label for="indicativo">Callsign</label>
+      <input id="indicativo" name="indicativo" type="text" placeholder="LU6EWB" maxlength="7" value="">
     </div>
-
-    <!-- Grid Statistics -->
-    <div class="col-lg-4">
-      <h5>Statistics</h5>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td>Packet RX</td>
-            <td>630</td>
-          </tr>
-          <tr>
-            <td>Packet TX</td>
-            <td>454</td>
-          </tr>
-          <tr>
-            <td>RF2INET</td>
-            <td>381</td>
-          </tr>
-          <tr>
-            <td>INET2RF</td>
-            <td>0</td>
-          </tr>
-          <tr>
-            <td>DIGI</td>
-            <td>0</td>
-          </tr>
-          <tr>
-            <td>DROP/ERR</td>
-            <td>0/0</td>
-          </tr>
-        </tbody>
-      </table>
+  
+    <div class="pure-control-group">
+      <label for="ssid">SSID</label>
+      <select id="ssid" name="ssid">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option selected="">15</option>
+      </select><span class="pure-form-message-inline">(usually 15)</span>
     </div>
-
-    <!-- Grid APRS Server -->
-    <div class="col-lg-4">
-      <h5>APRS Server</h5>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td>Host</td>
-            <td>rotate.aprs2.net</td>
-          </tr>
-          <tr>
-            <td>Port</td>
-            <td>14580</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h5>Wifi</h5>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td>Mode</td>
-            <td>Ap</td>
-          </tr>
-          <tr>
-            <td>SSID</td>
-            <td>APRS-Igate</td>
-          </tr>
-          <tr>
-            <td>RSSI</td>
-            <td>-41dBm</td>
-          </tr>
-        </tbody>
-      </table>
+  
+    <div class="pure-control-group">
+      <label for="icone">Icon</label>
+      <select id="tabelaIcon" name="tabelaIcon">
+        <option>/</option>
+        <option>\</option>
+      </select>
+      <select id="icone" name="icone">
+        <option>#</option>
+        <option>!</option>
+        <option>$</option>
+        <!-- Agrega más opciones según sea necesario -->
+      </select><span class="pure-form-message-inline"><a href="tabla-simbolos-aprs.png" onclick="openPopup('tabla-simbolos-aprs.png', 'Tabla de Símbolos APRS')">ver tabla</a></span>
     </div>
-  </div>
-
-  <!-- Grid Last Heard -->
-  <div class="row">
-    <div class="col-lg-12">
-      <h5>Last Heard</h5>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Time (-3GMT)</th>
-            <th>Icon</th>
-            <th>Via Last Path</th>
-            <th>DX</th>
-            <th>Packet</th>
-            <th>Audio</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>18:17:48</td>
-            <td>Icono ambulancia</td>
-            <td>LU1ABC-13 Digi: LU7AA-2*</td>
-            <td>17.8k/221°</td>
-            <td>44</td>
-            <td>-8.9dBV</td>
-          </tr>
-          <!-- Agrega más filas según sea necesario -->
-        </tbody>
-      </table>
+  
+    <div class="pure-control-group">
+      <label for="Comentario">Comment</label>
+      <input id="Comentario" value="" type="text" maxlength="70" name="Comentario" placeholder="Digipeater Arduino - AR">
     </div>
-  </div>
+  
+    <div class="pure-control-group">
+      <label for="Intervalo">Beacon Interval</label>
+      <select id="Intervalo" name="Intervalo">
+        <option>10</option>
+        <option selected="">15</option>
+        <option>20</option>
+        <option>30</option>
+        <option>45</option>
+        <option>60</option>
+      </select><span class="pure-form-message-inline">minutos.</span>
+    </div>
+  
+    <div class="pure-control-group">
+      <label for="wide">WIDE</label>
+      <select id="wide" name="wide">
+        <option>WIDE1-1</option>
+        <option selected="">WIDE2-1</option>
+        <option>WIDE2-2</option>
+        <option>WIDE3-3</option>
+      </select>
+    </div>
+  
+    <!-- Agrega más campos según sea necesario -->
+  
+    <div class="pure-control-group">
+      <p style="margin: 0 15px"><b>Coordenadas de posición en formato DECIMAL:</b></p>
+    </div>
+  
+    <div class="pure-control-group">
+      <label for="Latitude">Latitude</label>
+      <input id="Latitude" value="" type="text" maxlength="10" name="Latitude" placeholder="-23.68978">
+    </div>
+  
+    <div class="pure-control-group">
+      <label for="Longitude">Longitude</label>
+      <input value="" id="Longitude" type="text" maxlength="11" name="Longitude" placeholder="-51.02578">
+      <input type="button" class="pure-button pure-button-primary" value="Confirmar en el Google maps" onclick="javascript: window.open('http://google.com/maps/place/' + document.getElementById('Latitude').value +','+ document.getElementById('Longitude').value);">
+    </div>
+  
+    <div class="pure-control-group">
+      <p style="margin: 0 15px"><b>Información de la estación:</b></p>
+    </div>
+  
+    <div class="pure-control-group">
+      <!-- Agrega más campos según sea necesario -->
+    </div>
+  
+    <div class="pure-control-group">
+      <label for="email">Tu correo electrónico</label>
+      <input id="email" type="text" maxlength="120" name="email" value="" placeholder="yo@gmail.com">
+    </div>
+  </div>  
 </div>
 
 <!-- Agrega la referencia a Bootstrap 5 JS y Popper.js (necesarios para Bootstrap) -->
